@@ -1,3 +1,5 @@
+CREATE DATABASE presupuestos
+
 USE presupuestos
 
 CREATE TABLE users
@@ -23,4 +25,4 @@ VALUES
   ('cinthyaUser','cinthya', 'miranda', 'cinthya@mail.com',  'cinthyapass', 22222222),
   ('edgarUser','edgar', 'bastida', 'edgar@mail.com',  'edgarpass', 33333333);
 
-SELECT [user],email,[name] FROM users WHERE [user] ='anahiUser' AND [password] = 'cinthyapass'
+SELECT [user],email,[name] FROM users WHERE [user] ='cinthyaUser' AND [password] = 'cinthyapass'

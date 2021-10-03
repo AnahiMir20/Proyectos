@@ -42,7 +42,7 @@ async function login() {
                 })
                 .then(() => {
                     alert('Bienvenido!!')
-                    window.location.href = "./shop.html";
+                    window.location.href = "./presupuestos.html";
                 })
                 .catch(error => { console.log('error', error) });
 
