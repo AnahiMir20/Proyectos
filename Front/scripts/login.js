@@ -68,6 +68,7 @@ async function updatePassword() {
                     }
 
                     var myHeaders = new Headers();
+                    myHeaders.append("Authorization", "Bearer "+ localStorage.getItem("token"));
                     myHeaders.append("Content-Type", "application/json");
 
                     var raw = JSON.stringify(password);
