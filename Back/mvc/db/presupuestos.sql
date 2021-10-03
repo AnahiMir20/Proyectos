@@ -1,24 +1,26 @@
-CREATE DATABASE presupuestos;
-GO
+USE presupuestos
 
 CREATE TABLE users
 (
-  id_user int NOT NULL,
-  [name] text NOT NULL,
-  last_name text NOT NULL,
-  email varchar(35) NOT NULL,
-  adress text NOT NULL,
-  [password] text NOT NULL,
+  id_user int NOT NULL IDENTITY(1,1),
+  [user] CHAR(30) NOT NULL,
+  [name] CHAR(30) NOT NULL,
+  last_name CHAR(30) NOT NULL,
+  email CHAR(35) NOT NULL,
+  [password] CHAR(100) NOT NULL,
   tel int NOT NULL,
   PRIMARY KEY (email)
 )
 SELECT *
 FROM users
 
+
 INSERT INTO users
-  (id_user,[name],last_name,email,adress,[password],tel)
+  ([user],[name],last_name,email,[password],tel)
 
 VALUES
-   (2, 'anahi', 'miranda', 'anahi@mail.com', 'calle 1', 'cinthyapass', 22222222),
-  (3, 'eevan', 'bastida', 'eevan@mail.com', 'calle 1', 'edgarpass', 33333333);
+  
+  ('cinthyaUser','cinthya', 'miranda', 'cinthya@mail.com',  'cinthyapass', 22222222),
+  ('edgarUser','edgar', 'bastida', 'edgar@mail.com',  'edgarpass', 33333333);
 
+SELECT [user],email,[name] FROM users WHERE [user] ='anahiUser' AND [password] = 'cinthyapass'

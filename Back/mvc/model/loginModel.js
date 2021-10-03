@@ -20,7 +20,7 @@ module.exports = class loginModel {
         if (result[0].length == 0) {
             let result = await sequelize.query("SELECT [user],email,[name] FROM users WHERE [user] ='" + user.user + "' AND [password] = '" + user.password + "'");
             if (result[0].length > 0) {
-                return
+                return result[0][0]
             }
             else {
                 return false
@@ -30,5 +30,22 @@ module.exports = class loginModel {
             return false
         }
     }
+
+    async updateLogin(user,login) {
+        let result = await sequelize.query("UPDATE users SET [password] = '"+login.passwordNuevo+"' WHERE [user] = '"+user.user+"' AND [password] ='"+login.passwordActual+"'");
+        if (result[0].length == 0) {
+            let result = await sequelize.query("SELECT [user],email,[name] FROM users WHERE [user] ='" + user.user + "' AND [password] = '" +login.passwordNuevo + "'");
+            if (result[0].length > 0) {
+                return result[0][0]
+            }
+            else {
+                return false
+            }
+        }
+        else {
+            return false
+        }
+    }
+
 }
 
