@@ -31,3 +31,10 @@
 .login-form-font-header span {
   color: #007C9B;
 }
+
+.contenedor-botones{
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  margin: 10px 10px;
+}
