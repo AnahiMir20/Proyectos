@@ -24,11 +24,10 @@ obtenerPresupuestos()
 function mostrarPresupuestos(presupuestos) {
 
     console.log(presupuestos[0].length);
-
-    presupuestos[0].forEach(presupuesto => {
-        console.log(presupuesto)
-        let presupuestoHTML = `
-         
+    if (document.getElementById("contenedor-Presupuesto")) {
+        presupuestos[0].forEach(presupuesto => {
+            console.log(presupuesto)
+            let presupuestoHTML = `         
                                 <th scope="row">${presupuesto.idPresupuesto}</th>
                                 <td>${presupuesto.creacion}</td>
                                 <td>${presupuesto.proyecto}</td>
@@ -38,13 +37,14 @@ function mostrarPresupuestos(presupuestos) {
                                     <button onclick="enviarPresupuesto(${presupuesto.idPresupuesto})" type="button" class="btn btn-outline-primary">Enviar</button>
                                 </td>
                             `
-        let presupuestolista = document.createElement('tr');
-        presupuestolista.innerHTML = presupuestoHTML;
-        document.getElementById("contenedor-Presupuesto").appendChild(presupuestolista);
-    });
-
-
-
-
-
+            let presupuestolista = document.createElement('tr');
+            presupuestolista.innerHTML = presupuestoHTML;
+            document.getElementById("contenedor-Presupuesto").appendChild(presupuestolista);
+        });
+    }
 }
+
+
+
+
+

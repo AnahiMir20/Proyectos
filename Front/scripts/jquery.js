@@ -36,4 +36,17 @@ $(function () {
         return false;
     });
 
+    $('#guardar-presupuesto').on('click', function () {
+        $('#popup-presupuesto').fadeIn('slow');
+        $('.popup-overlay-presupuesto').fadeIn('slow');
+        $('.popup-overlay-presupuesto').height($(window).height());
+        return false;
+
+    });
+    $('#close-presupuesto').on('click', function () {
+        $('#popup-presupuesto').fadeOut('slow');
+        $('.popup-overlay-presupuesto').fadeOut('slow');
+        return false;
+    });
+
 });

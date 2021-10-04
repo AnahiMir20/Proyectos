@@ -46,7 +46,7 @@ module.exports = class presupuestosModel {
     }
 
     async selectFlujo(flujo) {
-        let result = await sequelize.query("SELECT * FROM flujoEfectivo WHERE idFlujo = "+flujo.idPresupuesto);
+        let result = await sequelize.query("SELECT * FROM flujoEfectivo WHERE idPresupuesto = "+flujo.idPresupuesto);
         return result
     }
     async insertFlujo(flujo) {
