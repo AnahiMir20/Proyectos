@@ -34,7 +34,7 @@ module.exports = class presupuestosModel {
             return false
         }
     }
-    async update(presupuesto) {
+    async delete(presupuesto) {
         let result = await sequelize.query("DELETE FROM presupuestos WHERE idPresupuesto =" + presupuesto.idPresupuesto); console.log(result);
         console.log(result);
         if (result[0].length == 0) {
