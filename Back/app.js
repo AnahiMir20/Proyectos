@@ -3,6 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 const sequelize = require('./mvc/db/conexion');
 const loginView = require('./mvc/view/loginView')
+const presupuestosView = require('./mvc/view/presupuestosView')
 
 const app = express();
 
@@ -31,3 +32,4 @@ serverStart();
 //iniciamos vista
 
 loginView(app)
+presupuestosView(app)
