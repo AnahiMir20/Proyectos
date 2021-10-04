@@ -47,6 +47,26 @@ module.exports = class presupuestosModel {
             return false
         }
     }
+    async insertGasto(gasto) {
+        let result = await sequelize.query("INSERT INTO gastosAdministrativos (idPresupuesto,concepto,mes,gasto) VALUES (" + gasto.idPresupuesto + ",'" + gasto.concepto + "', " + gasto.mes + "," +gasto.gasto +")");
+        console.log(result);
+        if (result[0].length == 0) {
+            return result
+        }
+        else {
+            return false
+        }
+    }
+    async insertRecurso(recurso) {
+        let result = await sequelize.query("INSERT INTO recursos (idPresupuesto,rol,recurso,porcentaje,mes) VALUES (" + recurso.idPresupuesto + "," + recurso.rol + ", " + recurso.recurso + "," +recurso.porcentaje + "," +recurso.mes +")");
+        console.log(result);
+        if (result[0].length == 0) {
+            return result
+        }
+        else {
+            return false
+        }
+    }
 
 }
 
