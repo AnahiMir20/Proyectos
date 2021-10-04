@@ -15,6 +15,14 @@ module.exports = async (app) => {
         let flujo = req.body;
         res.send(await presupuestosController.insertFlujo(flujo));
     });
+    app.post('/presupuestos/insertIngreso', autentication.userAutentication, async (req, res) => {
+        let ingreso = req.body;
+        res.send(await presupuestosController.insertIngreso(ingreso));
+    });
+    app.post('/presupuestos/insertCosto', autentication.userAutentication, async (req, res) => {
+        let costo = req.body;
+        res.send(await presupuestosController.insertCosto(costo));
+    });
 
     app.post('/login/update', autentication.userAutentication, async (req, res) => {
         const token = req.headers.authorization.split(' ')[1];

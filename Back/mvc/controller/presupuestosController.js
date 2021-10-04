@@ -13,12 +13,24 @@ module.exports.insertFlujo = async (flujo) => {
     let result = await response.insertFlujo(flujo)
     return result;
 }
+module.exports.insertIngreso = async (ingreso) => {
+    let response = new presupuestosModel();
+    let result = await response.insertIngreso(ingreso)
+    return result;
+}
+
+module.exports.insertCosto = async (costo) => {
+    let response = new presupuestosModel();
+    let result = await response.insertCosto(costo)
+    return result;
+}
 
 module.exports.updateProduct = async (product) => {
     let response = new productsModel();
     let result = await response.update(product)
     return result;
 }
+
 
 module.exports.deleteProduct = async (productName) => {
     let response = new productsModel();
