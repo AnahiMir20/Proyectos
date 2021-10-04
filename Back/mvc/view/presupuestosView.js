@@ -23,7 +23,22 @@ module.exports = async (app) => {
         let costo = req.body;
         res.send(await presupuestosController.insertCosto(costo));
     });
+    app.post('/presupuestos/insertGasto', autentication.userAutentication, async (req, res) => {
+        let gasto = req.body;
+        res.send(await presupuestosController.insertGasto(gasto));
+    });
+    app.post('/presupuestos/insertRecurso', autentication.userAutentication, async (req, res) => {
+        let recurso = req.body;
+        res.send(await presupuestosController.insertRecurso(recurso));
+    });
 
+    app.post('/login/update', autentication.userAutentication, async (req, res) => {
+        const token = req.headers.authorization.split(' ')[1];
+        const login = req.body;
+        let user = jwt.verify(token, process.env.SECRETKEY);
+        res.send(await loginController.updateLogin(user.data, login));
+    });
+    
     app.post('/login/update', autentication.userAutentication, async (req, res) => {
         const token = req.headers.authorization.split(' ')[1];
         const login = req.body;
