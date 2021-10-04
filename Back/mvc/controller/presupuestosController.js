@@ -8,6 +8,12 @@ module.exports.insert = async (presupuesto) => {
     return result;
 }
 
+module.exports.insertFlujo = async (flujo) => {
+    let response = new presupuestosModel();
+    let result = await response.insertFlujo(flujo)
+    return result;
+}
+
 module.exports.updateProduct = async (product) => {
     let response = new productsModel();
     let result = await response.update(product)

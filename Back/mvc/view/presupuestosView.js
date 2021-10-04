@@ -11,6 +11,10 @@ module.exports = async (app) => {
         let presupuesto = req.body;
         res.send(await presupuestosController.insert(presupuesto));
     });
+    app.post('/presupuestos/insertFlujo', autentication.userAutentication, async (req, res) => {
+        let flujo = req.body;
+        res.send(await presupuestosController.insertFlujo(flujo));
+    });
 
     app.post('/login/update', autentication.userAutentication, async (req, res) => {
         const token = req.headers.authorization.split(' ')[1];

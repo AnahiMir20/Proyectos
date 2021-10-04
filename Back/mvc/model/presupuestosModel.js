@@ -16,7 +16,23 @@ module.exports = class presupuestosModel {
             return false
         }
     }
+    async insertFlujo(flujo) {
+        let result = await sequelize.query("INSERT INTO flujoEfectivo (idPresupuesto,mes,ingreso) VALUES (" + flujo.idPresupuesto + "," + flujo.mes + ", " + flujo.ingreso + ")");
+        console.log(result);
+        if (result[0].length == 0) {
+            return result
+        }
+        else {
+            return false
+        }
+    }
 
 }
 
 
+// idFlujo INT NOT NULL IDENTITY (1,1),
+// idPresupuesto INT NOT NULL,
+// mes INT NOT NULL,
+// ingreso FLOAT NOT NULL,
+// PRIMARY KEY (idFlujo),
+// FOREIGN KEY(idPresupuesto) REFERENCES presupuestos(idPresupuesto)]
