@@ -11,20 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="//code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script> $(document).ready(function () {
-            $('#crear').on('click', function () {
-                $('#popup').fadeIn('slow');
-                $('.popup-overlay').fadeIn('slow');
-                $('.popup-overlay').height($(window).height());
-                return false;
-            });
-            $('#close').on('click', function () {
-                $('#popup').fadeOut('slow');
-                $('.popup-overlay').fadeOut('slow');
-                return false;
-            });
-        });
-    </script>
+
 </head>
 
 <body>
@@ -116,15 +103,16 @@
                     </tbody>
                 </table>
                 <div class="d-grid gap-2 d-md-block contenedor-botones">
-                    <button id="crear" type="button" class="btn btn-outline-success">Agregar</button>
-                    <button type="button" class="btn btn-outline-danger">Eliminar</button>
+                    <button id="crear-flujo" type="button" class="btn btn-outline-success">Agregar</button>
+                    <button id="eliminar-flujo" type="button" class="btn btn-outline-danger">Eliminar</button>
                 </div>
             </div>
         </div>
     </div>
-    <div id="popup" style="display: none;">
+
+    <div id="popup-flujo" style="display: none;">
         <div class="content-popup">
-            <div class="close"><a href="#" id="close"><img src="img/d.png" /></a></div>
+            <div class="close"><a href="#" id="close-flujo"><img src="img/d.png" /></a></div>
             <div>
                 <h2>Nuevo flujo de fectvo</h2>
                 <form>
@@ -134,30 +122,58 @@
                             <p>
                         </div>
                     </div>
-                    <p>Titulo</p>
+                    <p id="listaTituloFlujo">Titulo</p>
                     <select id="flujoMes" name="OS">
-                        <option value="1">Enero</option>
-                        <option value="2">Febrero</option>
-                        <option value="3">Marzo</option>
-                        <option value="4">Abril</option>
-                        <option value="5">Mayo</option>
-                        <option value="6">Junio</option>
-                        <option value="7">Julio</option>
-                        <option value="8">Agosto</option>
-                        <option value="9">Septiembre</option>
-                        <option value="10">Otubre</option>
-                        <option value="11">Novienbre</option>
-                        <option value="12">Diciembre</option>
+                        <option>Enero</option>
+                        <option>Febrero</option>
+                        <option>Marzo</option>
+                        <option>Abril</option>
+                        <option>Mayo</option>
+                        <option>Junio</option>
+                        <option>Julio</option>
+                        <option>Agosto</option>
+                        <option>Septiembre</option>
+                        <option>Octubre</option>
+                        <option>Noviembre</option>
+                        <option>Diciembre</option>
                     </select>
-                    <p>Ingresos</p>
                     <div class="row">
                         <div class="col-md-12 login-from-row">
+                            <p>Ingresos</p>
                             <input id="flujoIngreso" name="valor" type="number" placeholder="Ingeso" required />
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 login-from-row">
-                                <button type="button" onclick="flujoAgregar()"class="btn btn-outline-success">Agregar</button>
-                            </div>
+                        <div class="col-md-12 login-from-row">
+                            <button type="button" onclick="flujoAgregar()"
+                                class="btn btn-outline-success">Agregar</button>
+                        </div>
+                    </div>
+            </div>
+            </form>
+            <div style="float:left; width:100%;">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="popup-overlay"></div>
+
+    <div id="popup-eliminar-flujo" style="display: none;">
+        <div class="content-popup">
+            <div class="close"><a href="#" id="close-flujo-eliminar"><img src="img/d.png" /></a></div>
+            <div>
+                <h2>Eliminar flujo de fectvo</h2>
+                <form>
+                    <div class="row">
+                        <div class="col-md-12 login-form-header">
+                            <p class="login-form-font-header">ADMIN<span>Aburido</span>
+                            <p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 login-from-row">
+                        <p>Se eliminara la ultima fila de la tabla Flujo de efectivo<br>
+                            ¿Desea contiuar?</p>
+                        <div class="col-md-12 login-from-row">
+                            <button type="button" onclick="flujoEliminar()"
+                                class="btn btn-outline-danger">Confirmar</button>
                         </div>
                     </div>
                 </form>
@@ -166,7 +182,7 @@
             </div>
         </div>
     </div>
-    <div class="popup-overlay"></div>
+    <div class="popup-overlay-eliminar"></div>
     <div class="container">
         <div class="row text-center">
             <div class="col-md-12">
