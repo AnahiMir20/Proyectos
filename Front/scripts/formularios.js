@@ -176,7 +176,7 @@ async function insertarFlujos(presupuesto) {
 
 
 async function insertarFlujo(presupuesto, flujo) {
-    
+
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + localStorage.getItem("token"));
     myHeaders.append("Content-Type", "application/json");
