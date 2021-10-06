@@ -66,7 +66,7 @@ module.exports = async (app) => {
         let costo = req.body;
         res.send(await presupuestosController.deleteCosto(costo));
     });
-    
+
     app.get('/presupuestos/selectGasto', autentication.userAutentication, async (req, res) => {
         let gasto = req.body;
         res.send(await presupuestosController.selectGasto(gasto));
@@ -79,7 +79,7 @@ module.exports = async (app) => {
         let gasto = req.body;
         res.send(await presupuestosController.deleteGasto(gasto));
     });
-    
+
     app.get('/presupuestos/selectRecurso', autentication.userAutentication, async (req, res) => {
         let recurso = req.body;
         res.send(await presupuestosController.selectRecurso(recurso));

@@ -9,7 +9,8 @@ module.exports.userAutentication = function (req, res, next) {
         } catch (error) {
             throw new Error("Token invalido")
         }
-    }else {
+    }
+    else {
         throw new Error("Token invalido")
     }
 }
