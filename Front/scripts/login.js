@@ -11,7 +11,6 @@ function validateText(valor) {
     }
 }
 
-
 async function login() {
     actualPassword = document.getElementById('loginUser').value;
     if (validateText(actualPassword)) {
@@ -54,6 +53,7 @@ async function login() {
         alert('Introdusca su Usuario Correctamente')
     }
 }
+
 async function updatePassword() {
     actualPassword = document.getElementById('actualPassword').value;
     if (validateText(actualPassword)) {

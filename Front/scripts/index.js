@@ -19,6 +19,7 @@ async function obtenerPresupuestos() {
 
 }
 
+validationSession()
 obtenerPresupuestos()
 
 function mostrarPresupuestos(presupuestos) {
@@ -43,6 +44,16 @@ function mostrarPresupuestos(presupuestos) {
         });
     }
 }
+
+function validationSession(){
+    let token = localStorage.getItem("token")
+    console.log(!token)
+    if (!token ){
+        console.log(!token)
+        window.location.href = "./index.html";
+    }
+}
+
 
 
 
