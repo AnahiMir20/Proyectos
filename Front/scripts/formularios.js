@@ -1,4 +1,5 @@
 var flujos = {}
+var ingresos = {}
 var flujoMesAnterior = 0
 var mesesAno = {
     1: 'Enero',
@@ -203,4 +204,87 @@ async function insertarFlujo(presupuesto, flujo) {
 }
 
 
+
+function ingresoAgregar() {
+    let ingresoMes = document.getElementById("ingresoMes").selectedIndex + 1
+    let ingresoConcepto = document.getElementById('ingresoConcepto').value;
+    if (validateText(ingresoConcepto)) {
+        let ingresoIngreso = document.getElementById('ingresoIngreso').value;
+        if (ingresoIngreso) {
+            nuevoIngreso = { concepto: ingresoConcepto, mes: ingresoMes, ingreso: Number(ingresoIngreso) }
+            ingresos[ingresoConcepto] = nuevoIngreso
+            console.log(ingresos);
+
+
+            $('#popup-ingreso').fadeOut('slow');
+            $('.popup-overlay').fadeOut('slow');
+        }
+        else {
+            alert('No se capturo ningun Ingreso')
+        }
+    }
+    else {
+        alert('No se ingreso ningun Concepto')
+    }
+    mostrarIngresos()
+
+
+}
+
+
+function mostrarIngresos() {
+    let saldoFinal = 0;
+    $("#contenedor-Ingreso").empty()
+
+    if (!$.isEmptyObject(ingresos)) {
+        console.log('Algo')
+        let ingresoOpciones = document.createElement('select');
+            ingresoOpciones.setAttribute("id","tituloIngresoEliminar")
+        for (element in ingresos) {
+
+            console.log(ingresos[element]['ingreso'])
+            saldoFinal += ingresos[element]['ingreso'];
+            let ingresoHTML = ` 
+            <tr>
+            <th scope="row">${mesesAno[ingresos[element]['mes']]}</th>
+            <td>${ingresos[element]['concepto']}</td>
+            <td>$${ingresos[element]['ingreso']}</td>
+            <td>$${saldoFinal}</td>
+            </tr> `
+            let ingresolista = document.createElement('tr');
+            ingresolista.innerHTML = ingresoHTML;
+            document.getElementById("contenedor-Ingreso").appendChild(ingresolista);
+        
+            let ingresoOpcionEliminar = `
+            
+                        <option>${ingresos[element]['concepto']}</option>
+                        `
+                        $("#ingresoMesEliminar").empty()
+            ingresoOpciones.innerHTML +=ingresoOpcionEliminar
+            document.getElementById("ingresoMesEliminar").appendChild(ingresoOpciones)
+        }
+        let totalHtml = `
+        <th scope="row">Total</th>
+            <td>$${saldoFinal}</td>`
+        let ingresolista = document.createElement('tr');
+        ingresolista.innerHTML = totalHtml;
+        document.getElementById("contenedor-Ingreso").appendChild(ingresolista);
+
+
+
+    } else {
+        saldoFinal = 0
+        let totalHtml = `
+        <th scope="row">Total</th>
+            <td>$${saldoFinal}</td>`
+        let ingresolista = document.createElement('tr');
+        ingresolista.innerHTML = totalHtml;
+        document.getElementById("contenedor-Ingreso").appendChild(ingresolista);
+
+    }
+}
+
+
+
 mostrarFlujos()
+mostrarIngresos()

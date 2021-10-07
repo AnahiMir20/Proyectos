@@ -1,4 +1,5 @@
 $(function () {
+//////////Flujos/////////////////
     $('#crear-flujo').on('click', function () {
         if ($.isEmptyObject(flujos)) {
             $('#flujoMes').show()
@@ -6,7 +7,6 @@ $(function () {
             $('#flujoMes').hide()
             $('#listaTituloFlujo').hide()
         }
-
         $('#popup-flujo').fadeIn('slow');
         $('.popup-overlay').fadeIn('slow');
         $('.popup-overlay').height($(window).height());
@@ -27,14 +27,56 @@ $(function () {
             $('.popup-overlay-eliminar').height($(window).height());
             return false;
         }
-
-
     });
     $('#close-flujo-eliminar').on('click', function () {
         $('#popup-eliminar-flujo').fadeOut('slow');
         $('.popup-overlay-eliminar').fadeOut('slow');
         return false;
     });
+
+    //////////Ingresos/////////////////
+    $('#crear-ingreso').on('click', function () {
+        
+        $('#popup-ingreso').fadeIn('slow');
+        $('.popup-overlay').fadeIn('slow');
+        $('.popup-overlay').height($(window).height());
+        return false;
+    });
+    $('#close-flujo').on('click', function () {
+        $('#popup-ingreso').fadeOut('slow');
+        $('.popup-overlay').fadeOut('slow');
+        return false;
+    });
+
+    $('#eliminar-ingreso').on('click', function () {
+        console.log(ingresos)
+        if ($.isEmptyObject(ingresos)) {
+            alert('No hay nada a eliminar')
+        } else {
+            $('#popup-eliminar-ingreso').fadeIn('slow');
+            $('.popup-overlay-eliminar').fadeIn('slow');
+            $('.popup-overlay-eliminar').height($(window).height());
+            return false;
+        }
+    });
+    $('#close-flujo-eliminar').on('click', function () {
+        $('#popup-eliminar-ingreso').fadeOut('slow');
+        $('.popup-overlay-eliminar').fadeOut('slow');
+        return false;
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     $('#guardar-presupuesto').on('click', function () {
         $('#popup-presupuesto').fadeIn('slow');
